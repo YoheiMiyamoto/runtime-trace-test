@@ -13,6 +13,7 @@ type Task struct {
 	bug      bool          // trueの場合処理時にエラーが発生する
 }
 
+// work関数は引数のTaskを実行し、その実行結果を返します
 func work(ctx context.Context, t *Task) error {
 	errCh := make(chan error, 1)  // 追加
 	go func(errCh chan<- error) { // work処理を別のgoroutineで実行。エラーはerrChに送信。

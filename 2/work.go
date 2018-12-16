@@ -12,6 +12,7 @@ type Task struct {
 	bug      bool          // trueの場合処理時にエラーが発生する
 }
 
+// work関数は引数のTaskを実行し、その実行結果を返します
 func work(t *Task) error {
 	time.Sleep(t.duration) // 擬似的に待機させます。
 
