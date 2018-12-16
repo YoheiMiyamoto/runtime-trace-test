@@ -34,7 +34,7 @@ func work(ctx context.Context, t *Task) error {
 		fmt.Fprintf(os.Stdout, "done %s\n", t.name)
 		return nil
 	case <-ctx.Done():
-		fmt.Fprintf(os.Stdout, "%s 強制終了\n", t.name)
+		fmt.Fprintf(os.Stdout, "%s 途中終了\n", t.name)
 		return ctx.Err()
 	}
 }
