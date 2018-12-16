@@ -33,7 +33,7 @@ func work(ctx context.Context, t *Task) error {
 		}
 		fmt.Fprintf(os.Stdout, "done %s\n", t.name)
 		return nil
-	case <-ctx.Done():
+	case <-ctx.Done(): // 他のGoroutineから終了通知を受け取った場合
 		fmt.Fprintf(os.Stdout, "%s 途中終了\n", t.name)
 		return ctx.Err()
 	}
