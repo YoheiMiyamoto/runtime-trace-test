@@ -39,6 +39,7 @@ func main() {
 		})
 	}
 
+	// すべての並列処理が完了するまで待機
 	err = eg.Wait()
 	if err != nil {
 		fmt.Fprint(os.Stdout, err.Error())
