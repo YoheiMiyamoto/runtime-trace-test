@@ -12,11 +12,11 @@ type Task struct {
 	bug      bool          // trueの場合処理時にエラーが発生する
 }
 
-// work関数は引数のTaskを実行し、その実行結果を返します
+// work関数は引数のTaskを実行し、その実行結果を返す
 func work(t *Task) error {
-	time.Sleep(t.duration) // 擬似的に待機させます。
+	time.Sleep(t.duration) // 擬似的に待機させる
 
-	// taskにbugが含まれている場合はエラーを発生させます
+	// taskにbugが含まれている場合はエラーを発生させる
 	if t.bug {
 		return fmt.Errorf("err %s", t.name)
 	}
