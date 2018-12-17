@@ -29,7 +29,7 @@ func work(ctx context.Context, t *Task) error {
 	select {
 	case err := <-errCh:
 		if err != nil {
-			return err // エラーが起きたことはctx経由で他のgoroutineにも送信される
+			return err // ここでエラーが起きたことはctx.Done()経由で他のgoroutineに送信される
 		}
 		fmt.Fprintf(os.Stdout, "done %s\n", t.name)
 		return nil
