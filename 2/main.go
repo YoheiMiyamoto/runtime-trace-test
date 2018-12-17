@@ -39,6 +39,7 @@ func main() {
 
 	// すべての並列処理が完了するまで待機
 	if err := eg.Wait(); err != nil {
+		// 複数の並列処理からエラーが出た場合は1つ目のエラーをキャッチ
 		fmt.Println(err.Error())
 	}
 }

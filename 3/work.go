@@ -29,12 +29,12 @@ func work(ctx context.Context, t *Task) error {
 	select {
 	case err := <-errCh:
 		if err != nil {
-			return err
+			return err // エラーが起きたことはctx経由で他のgoroutineにも送信される
 		}
 		fmt.Fprintf(os.Stdout, "done %s\n", t.name)
 		return nil
-	case <-ctx.Done(): // 他のGoroutineから終了通知を受け取った場合
-		fmt.Fprintf(os.Stdout, "%s 途中終了\n", t.name)
+	case <-ctx.Done(): // 他のGoroutineからキャンセル通知を受け取った場合
+		fmt.Fprintf(os.Stdout, "%s キャンセル\n", t.name)
 		return ctx.Err()
 	}
 }
